@@ -1,5 +1,5 @@
 import random
-finish_number = 50
+finish_number = 8
 
 with open('random_numbers.txt', 'r+') as f:
     for _ in range(finish_number):
