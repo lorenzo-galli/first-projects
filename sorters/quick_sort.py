@@ -27,7 +27,10 @@ def quicksort(to_sort):
             i += 1
         else:
             i += 1
-    return to_sort
+    i_pivot = to_sort.index(pivot)
+    sort1 = to_sort[0:i_pivot]
+    sort2 = to_sort[i_pivot + 1:list_len]
+    return sort1, sort2
 
 def is_sorted(to_sort):
     list_len = to_sort.__len__()
