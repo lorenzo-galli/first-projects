@@ -7,3 +7,10 @@ I tried to solve some problems proposed in [this project](https://github.com/kar
 Here a list of the projects with individual state
 
 [Factorizator](https://github.com/lorenzo-galli/first-projects/tree/master/factoring)     -  **Completed**
+[Sorters](https://github.com/lorenzo-galli/first-projects/tree/master/sorters)     -  **Ongoing**
+
+[Factorizator](https://github.com/lorenzo-galli/first-projects/tree/master/factoring)     -  **Completed**
+[Factorizator](https://github.com/lorenzo-galli/first-projects/tree/master/factoring)     -  **Completed**
+[Factorizator](https://github.com/lorenzo-galli/first-projects/tree/master/factoring)     -  **Completed**
+[Factorizator](https://github.com/lorenzo-galli/first-projects/tree/master/factoring)     -  **Completed**
+[Factorizator](https://github.com/lorenzo-galli/first-projects/tree/master/factoring)     -  **Completed**
