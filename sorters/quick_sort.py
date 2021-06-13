@@ -1,4 +1,3 @@
-from math import pi
 import random
 with open('random_numbers.txt', 'r') as f:
     unsorted = []  # initialize an empty array
@@ -6,7 +5,6 @@ with open('random_numbers.txt', 'r') as f:
         line = line.strip()
         line = int(line)
         unsorted.append(line)
-
 def is_sorted(to_sort):
     o = 0  # use this condition to make sure it doesn't go out of index
     while o < to_sort.__len__() - 1:
@@ -42,24 +40,17 @@ def quicksort(to_sort):
         i_pivot = to_sort.index(pivot)
         sort1 = to_sort[0:i_pivot]
         sort2 = to_sort[i_pivot + 1:len(to_sort)]
+        pivot_list = [pivot]
         if is_sorted(to_sort):
-            pivot_list = [pivot]
             to_sort = sort1 + pivot_list + sort2
-            print(to_sort)
+            print(str(to_sort) + "FINAL")
             return to_sort
         else:
             print(to_sort)
-            quicksort(sort1)
-            quicksort(sort2)
-            return sort1, sort2
+            sor1 = quicksort(sort1)
+            sor2 = quicksort(sort2)
+            to_sort = sort1 + pivot_list + sort2
+            if is_sorted(to_sort):
+                print(to_sort)   
 
-
-  #  if len(unsorted) < 2:
- #       print("There ain't nothing to sort XD")
-  #  else:
-  #      quicksort(unsorted)
-  
-print(unsorted)
-quicksort(unsorted)
-print(unsorted)
-print(is_sorted(unsorted))
+print(quicksort(unsorted))
