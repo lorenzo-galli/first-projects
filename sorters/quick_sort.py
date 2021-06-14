@@ -1,3 +1,11 @@
+'''
+ATTENTION!!!
+this was my attempt to recreate the quick sort algorithm. this code has a lot of bugs
+but i didn't bothered to fix it. i know this isn't the fastest way to implement this 
+algorithm. my goal was to comprehend how this sorting alg works and i think i reached it
+i still think that the idea is right.
+it once worked now it just doesn't. i'm giving up :/
+'''
 import random
 with open('random_numbers.txt', 'r') as f:
     unsorted = []  # initialize an empty array
@@ -15,42 +23,43 @@ def is_sorted(to_sort):
     return True  # if it loops in the whole array it means it's sorted
 
 def quicksort(to_sort): 
-    if len(to_sort) == 1 or is_sorted(to_sort) is True:
-        print("There ain't nothing to sort XD")
+    if len(to_sort) == 1 or is_sorted(to_sort) is True: # we return the array if it's sorted
         return to_sort
     else:
-        i_pivot = random.randint(0, to_sort.__len__() - 1)
-        pivot = to_sort[i_pivot]
+        i_pivot = random.randint(0, to_sort.__len__() - 1) # we take a random pivot and we assign the value to pivot
+        pivot = to_sort[i_pivot] # !!! if there are same numbers the code will break
         i = 0
-        print(pivot)
         while i < len(to_sort):
-            if to_sort[i] > pivot and i < i_pivot:
-                to_sort.append(to_sort[i])
+            if to_sort[i] > to_sort[i_pivot] and i < i_pivot:  # this is easy to understand when you start 
+                if to_sort[i] == pivot: # to think with indexes. if the num is equal to pivot we put it directly after
+                    to_sort.insert(i_pivot + 1, to_sort[i])
+                else:
+                    to_sort.append(to_sort[i])  
                 to_sort.pop(i)
-                i_pivot -= 1
-            elif to_sort[i] < pivot and i > i_pivot:
-                to_sort.insert(0, to_sort[i])
+                i_pivot -= 2
+            elif to_sort[i] < to_sort[i_pivot] and i > i_pivot:
+                if to_sort[i] == pivot:
+                    to_sort.insert(i_pivot + 1, to_sort[i])
+                else:
+                    to_sort.insert(0, to_sort[i])
                 to_sort.pop(i + 1)
-                i += 1
-            elif to_sort[i] == pivot:
-                i += 1
-            else:
-                i += 1
-        
+            i += 1
+
         i_pivot = to_sort.index(pivot)
-        sort1 = to_sort[0:i_pivot]
+        sort1 = to_sort[0:i_pivot]  # we create two different arrays
         sort2 = to_sort[i_pivot + 1:len(to_sort)]
-        pivot_list = [pivot]
         if is_sorted(to_sort):
-            to_sort = sort1 + pivot_list + sort2
-            print(str(to_sort) + "FINAL")
+            to_sort = sort1 + sort2  
+            to_sort.insert(i_pivot, pivot)
             return to_sort
         else:
-            print(to_sort)
             sor1 = quicksort(sort1)
             sor2 = quicksort(sort2)
-            to_sort = sort1 + pivot_list + sort2
-            if is_sorted(to_sort):
-                print(to_sort)   
+            to_sort = sor1 + sor2
+            to_sort.insert(i_pivot, pivot)
+            return to_sort
 
-print(quicksort(unsorted))
+print(unsorted)
+unsorted = quicksort(unsorted)
+print(unsorted)
+print(is_sorted(unsorted))
